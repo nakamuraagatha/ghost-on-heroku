@@ -1,0 +1,48 @@
+{{!< default}}
+
+{{#post}}
+
+<article class="{{post_class}}">
+    <header class="post-header">
+        <h1 class="post-title">{{title}}</h1>
+        <section class="post-meta">
+
+                {{#author}}
+
+                    {{#if image}}
+                    <figure class="author-image">
+                        <a class="img" href="{{url}}" style="background-image: url({{image}})"><span class="hidden">{{name}}'s Picture</span></a>
+                        <span class="name">{{name}}</span>
+                    </figure>
+                    {{/if}}
+
+                {{/author}}
+
+                <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+                {{#if tags}}
+                on <span class="post-tags">
+                    {{#foreach tags}}
+                      <a href="{{url}}" title="{{name}}" class="tag-{{id}}">#{{name}}</a>
+                    {{/foreach}}
+                </span>
+                {{/if}}
+        </section>
+    </header>
+
+    <section class="post-content" id="postContent">
+        <section class="share">
+           <div class="g-plusone" data-size="medium" data-href="{{url absolute="true"}}"></div>
+
+        </section>
+        {{content}}
+        
+    </section>
+
+    <footer class="post-footer">
+         {{!-- Email subscribe form at the bottom of the page --}}
+ 
+        {{> "subscribe"}}
+    </footer>
+</article>
+
+{{/post}}
